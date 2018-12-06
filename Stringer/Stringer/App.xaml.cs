@@ -3,7 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-namespace Stringer
+namespace StringerTestApp
 {
     public partial class App : Application
     {
@@ -11,7 +11,7 @@ namespace Stringer
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new Login());
         }
 
         protected override void OnStart()

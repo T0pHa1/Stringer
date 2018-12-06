@@ -1,25 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
-using Android.App;
-using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Android.OS;
-
-namespace Stringer.Droid
+namespace Stringer
 {
-    [Activity(Label = "Stringer", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public partial class MainPage : ContentPage
     {
-        protected override void OnCreate(Bundle savedInstanceState)
+        public MainPage()
         {
-            TabLayoutResource = Resource.Layout.Tabbar;
-            ToolbarResource = Resource.Layout.Toolbar;
+            InitializeComponent();
 
-            base.OnCreate(savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
+            Button button = new Button
+            {
+                Text = "To Settings",
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center
+            };
+
+            button.Clicked += async (sender, args) =>
+            {
+                await Navigation.PushAsync(new Settings());
+            };
+
+            Content = button;
         }
     }
 }
